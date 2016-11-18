@@ -1,0 +1,30 @@
+CALC:   ListNode.o LinkedList.o ExpQueue.o ExpStack.o Evaluator.o Interpreter.o Calculator.o Main.o
+	g++ ListNode.o LinkedList.o ExpQueue.o ExpStack.o Evaluator.o Interpreter.o Calculator.o Main.o -o CALC
+
+ListNode.o: ListNode.cpp ListNode.h
+	g++ -c ListNode.cpp
+
+LinkedList.o: LinkedList.cpp LinkedList.h ListNode.h
+	g++ -c LinkedList.cpp
+
+ExpQueue.o: ExpQueue.cpp ExpQueue.h
+	g++ -c ExpQueue.cpp
+
+ExpStack.o: ExpStack.cpp ExpStack.h
+	g++ -c ExpStack.cpp
+
+Evaluator.o: Evaluator.cpp Evaluator.h ExpStack.h
+	g++ -c Evaluator.cpp
+
+Interpreter.o: Interpreter.cpp Interpreter.h ListNode.h LinkedList.h ExpQueue.h ExpStack.h
+	g++ -c Interpreter.cpp
+
+Calculator.o: Calculator.cpp Calculator.h Evaluator.h Interpreter.h LinkedList.h
+	g++ -c Calculator.cpp
+
+Main.o: Main.cpp Calculator.h
+	g++ -c Main.cpp
+
+clean:
+	rm -f *.o
+	rm CALC
